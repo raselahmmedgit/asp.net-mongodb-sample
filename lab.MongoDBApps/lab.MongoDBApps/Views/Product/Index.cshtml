@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Product</h2>
+    </div>
+</div>
+<hr />
+<div class="row" ng-controller="ProductController">
+
+    <!--Add/Edit-->
+    <div class="form-horizontal col-md-12" ng-show="ProductForm">
+        <div class="form-group">
+            <label class="col-md-2 control-label">Product Name</label>
+            <div class="col-md-10">
+                <input type="text" ng-model="Product.ProductName" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Product Price</label>
+            <div class="col-md-10">
+                <input type="text" ng-model="Product.Price" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Product Category</label>
+            <div class="col-md-10">
+                <input type="text" ng-model="Product.Category" class="form-control" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-primary" ng-click="Save()">Save</button>
+                <button type="button" class="btn btn-warning" ng-click="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="col-md-offset-10">
+            <input type="button" value="Add" class="btn btn-primary" ng-click="Add()" />
+        </div>
+    </div>
+    <hr />
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+                <tr ng-repeat="product in Products">
+                    <td>{{product.ProductName}}</td>
+                    <td>{{product.Price}}</td>
+                    <td>{{product.Category}}</td>
+                    <td style="width: 200px;">
+                        <button class="btn btn-success" ng-click="Edit($index)">Edit</button>
+                        <button class="btn btn-danger" ng-click="Delete($index)">Delete</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="~/Scripts/App/Product.js"></script>
